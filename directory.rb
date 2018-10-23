@@ -1,5 +1,5 @@
 def interactive_menu
-@students = []
+
 loop do
   # 1. Print the menu and ask the user what to do
   # 2. read the input and save it into a variable
@@ -67,6 +67,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
+    @students = []
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
@@ -100,5 +101,6 @@ def process(selection)
     puts "i don't know what you meant, try again"
   end
 end
-interactive_menu
+
 try_load_students
+interactive_menu
