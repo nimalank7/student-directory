@@ -52,9 +52,9 @@ def show_students
   print_students_list(@students)
   print_footer(@students)
 end
-def save_students
+def save_students(filename = "students.csv")
   # open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(filename, "w")
   # iterate over the array of save_students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -90,13 +90,17 @@ def process(selection)
   when "1"
     @students = input_students
   when "3"
-    save_students
+    puts "Enter the filename:"
+    filename = STDIN.gets.chomp
+    save_students(filename)
     puts "Students saved!"
   when "2"
     show_students
     puts "Displayed students completed"
   when "4"
-    load_students
+    puts "Enter the filename"
+    filename = STDIN.gets.chomp
+    load_students(filename)
     puts "Loading students from file"
   when "9"
     puts "Closing down program..."
