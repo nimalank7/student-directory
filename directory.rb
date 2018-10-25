@@ -1,6 +1,6 @@
 #let's put all the students into an array
 def input_students
-  puts "Please enter the names of the students and their hobbies".center(100)
+  puts "Please enter the names of the students".center(100)
   puts "To finish, just hit return twice".center(100)
   # create an empty array
   students = []
@@ -24,8 +24,18 @@ def print_header
   puts "-------------".center(100)
 end
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)".center(100)
+  cohort_list = []
+  students.map do |student|
+    contain = cohort_list.include? student[:cohort]
+    if contain != true
+      cohort_list << student[:cohort]
+    end
+  end
+  cohort_list.each do |cohort_name|
+    students.each do |student|
+      next if student[:cohort] != cohort_name
+      puts "#{student[:name]} (#{student[:cohort]} cohort)".center(100)
+    end
   end
 end
 def print_footer(names)
