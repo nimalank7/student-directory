@@ -5,8 +5,8 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
-  cohort = gets.chomp.to_sym
+  name = gets.slice(0...-1)
+  cohort = gets.slice(0...-1).to_sym
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
@@ -17,8 +17,8 @@ def input_students
       puts "Now we have #{students.count} students".center(100)
     end
     # get another name from the user
-    name = gets.chomp
-    cohort = gets.chomp.to_sym
+    name = gets.slice(0...-1)
+    cohort = gets.slice(0...-1).to_sym
   end
   # return the array of students
   students
