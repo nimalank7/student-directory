@@ -54,23 +54,23 @@ def show_students
 end
 def save_students(filename = "students.csv")
   # open the file for writing
-  file = File.open(filename, "w")
+  File.open(filename, "w") do |file|
   # iterate over the array of save_students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
-  file.close
+end
 end
 def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
+  File.open(filename, "r") do |file|
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
     @students = []
     @students << {name: name, cohort: cohort.to_sym}
   end
-  file.close
+end
 end
 def try_load_students
   filename = ARGV.first # first argument from the command line
