@@ -21,19 +21,19 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   # create an empty array
-  students = []
+
   # get the first name
   name = STDIN.gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
+    @students << {name: name, cohort: :november}
+    puts "Now we have #{@students.count} students"
     # get another name from the user
     name = STDIN.gets.chomp
   end
   # return the array of students
-  students
+  @students
 end
 def print_header
   puts "The students of Villains Academy"
@@ -91,11 +91,16 @@ def process(selection)
     @students = input_students
   when "3"
     save_students
+    puts "Students saved!"
   when "2"
     show_students
+    puts "Displayed students completed"
   when "4"
     load_students
+    puts "Loading students from file"
   when "9"
+    puts "Closing down program..."
+
     exit # this will cause the program to terminate
   else
     puts "i don't know what you meant, try again"
