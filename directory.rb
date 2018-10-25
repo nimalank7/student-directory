@@ -22,10 +22,10 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  students.each.with_index(1) do |student, index|
-    number = index
-    next if student[:name].length > 12
-    puts "#{number}. #{student[:name]} (#{student[:cohort]} cohort)"
+  accumulator = 0
+  while (accumulator < students.length)
+    puts "#{students[accumulator][:name]} (#{students[accumulator][:cohort]} cohort)"
+    accumulator += 1
   end
 end
 def print_footer(names)
